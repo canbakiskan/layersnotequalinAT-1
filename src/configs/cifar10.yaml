@@ -1,0 +1,56 @@
+cuda: !!bool true
+seed: 2022
+directory: ""
+
+model: "resnet"
+train_type: null # retrain, all_adv, all_nat
+retrain_code: null
+cutoff_before: null
+single_layer_different: null # single layer behaves like early layers in naming
+
+dataset:
+  name: "cifar10"
+  image_size: [32, 32]
+  directory: "/data/datasets/CIFAR10"
+  n_classes: 10
+  train_batch_size: 128
+  test_batch_size: 100
+
+train:
+  lr: 1.0e-1
+  wd: 2.0e-4
+  momentum: 0.9
+  n_epochs: 80
+  optimizer: sgd
+  scheduler: step
+  lr_min: 0.0
+  lr_max: 0.01
+  scheduler_steps: [75, 100]
+
+adv_train:
+  attack: PGD
+  norm: "inf"
+  eps: 0.03137254901 #8/255
+  step_size: 0.00784313725 #2/255
+  n_steps: 10
+  random_start: true
+  n_restarts: 1
+
+  lr: 1.0e-1
+  wd: 2.0e-4
+  momentum: 0.9
+  n_epochs: 80
+  optimizer: sgd
+  scheduler: step
+  lr_min: 0.0
+  lr_max: 0.01
+  scheduler_steps: [75, 100]
+
+adv_test:
+  attack: PGD
+  norm: "inf"
+  eps: 0.03137254901 #8/255
+  step_size: 0.003137254901 #1/255
+  n_steps: 100
+  random_start: true
+  n_restarts: 1
