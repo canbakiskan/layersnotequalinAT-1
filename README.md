@@ -1,6 +1,6 @@
-# Not All Layers Are Equal in Adversarial Training
+# Early Layers Are More Important For Adversarial Robustness
 
-This repository contains the code for the paper "Not All Layers Are Equal in Adversarial Training". Observations in the paper are achieved by
+This repository contains the code for the paper "Early Layers Are More Important For Adversarial Robustness". Observations in the paper are achieved by
 1) Partial adversarial training: adversarially train some layers, freeze their weights and then naturally train other layers from a fresh initialization. Or the other way around: naturally train some layers, freeze, then adversarially train the rest from scratch.
 2) Perturbation-to-signal ratio (PSR) tracking across the layers.
 
